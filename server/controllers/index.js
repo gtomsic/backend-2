@@ -1,7 +1,9 @@
+const { v4: uuid } = require('uuid');
 const houses = require('../db.json');
 module.exports = {
   createHouse: (req, res) => {
-    console.log('Create House');
+    houses.push({ id: uuid(), ...req.body });
+    res.status(200).send(houses);
   },
   getHouses: (req, res) => {
     res.status(200).send(houses);
